@@ -4586,6 +4586,13 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     /** {@inheritDoc} */
     @Override
     public void notifyLidSwitchChanged(long whenNanos, boolean lidOpen) {
+        boolean disableLidState =
+                SystemProperties.getBoolean("persist.debug.disable_lid_state", false);
+        if (disableLidState) {
+            Slog.i(TAG, "Ignored lid changed state: lidOpen=" + lidOpen);
+            lidOpen = false;
+        }
+
         // lid changed state
         final int newLidState = lidOpen ? LID_OPEN : LID_CLOSED;
         if (newLidState == mDefaultDisplayPolicy.getLidState()) {
