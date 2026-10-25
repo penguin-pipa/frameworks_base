@@ -10200,7 +10200,8 @@ public class TelephonyManager {
             if (telephony != null) {
                 return telephony.getAllowedNetworkTypesForReason(getSubId(), reason);
             } else {
-                throw new IllegalStateException("telephony service is null.");
+                Rlog.d(TAG, "telephony service is null.");
+                return -1; // NETWORK_MODE_UNKNOWN
             }
         } catch (RemoteException ex) {
             Rlog.e(TAG, "getAllowedNetworkTypesForReason RemoteException", ex);
@@ -16119,7 +16120,8 @@ public class TelephonyManager {
                     return new Pair<Integer, Integer>(version / 100, version % 100);
                 }
             } else {
-                throw new IllegalStateException("telephony service is null.");
+                Log.d(TAG, "telephony service is null.");
+                return HAL_VERSION_UNKNOWN;
             }
         } catch (RemoteException e) {
             Log.e(TAG, "getHalVersion() RemoteException", e);

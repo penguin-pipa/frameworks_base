@@ -922,6 +922,9 @@
     <protected-broadcast android:name="android.app.action.DYNAMIC_BUNDLE_MODIFIED" />
     <protected-broadcast android:name="android.app.action.BRIDGED_NOTIFICATION_PREFERENCES" />
 
+    <!-- Used to launch a common app (FlipFlap) for devices with flip cover. -->
+    <protected-broadcast android:name="android.intent.action.LID_STATE_CHANGED" />
+
     <!-- Sleep Mode -->
     <protected-broadcast android:name="android.intent.action.SLEEP_MODE_TURN_OFF" />
 
